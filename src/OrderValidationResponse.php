@@ -5,7 +5,7 @@
  * Time: 3:51 PM
  */
 
-namespace Uzzal\SslCommerz;
+namespace Xenon\SslCommerz;
 
 
 class OrderValidationResponse

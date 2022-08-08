@@ -5,7 +5,7 @@
  * Time: 1:11 PM
  */
 
-namespace Uzzal\SslCommerz\Exceptions;
+namespace Xenon\SslCommerz\Exceptions;
 
 
 use Throwable;

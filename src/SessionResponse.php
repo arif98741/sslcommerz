@@ -5,7 +5,7 @@
  * Time: 1:46 PM
  */
 
-namespace Uzzal\SslCommerz;
+namespace Xenon\SslCommerz;
 
 
 class SessionResponse

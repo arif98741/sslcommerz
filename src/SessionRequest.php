@@ -5,12 +5,12 @@
  * Time: 12:58 PM
  */
 
-namespace Uzzal\SslCommerz;
+namespace Xenon\SslCommerz;
 
 
-use Uzzal\SslCommerz\Contracts\SessionRequestInterface;
-use Uzzal\SslCommerz\Exceptions\RequestParameterMissingException;
-use Uzzal\SslCommerz\Traits\RequestValidatorTrait;
+use Xenon\SslCommerz\Contracts\SessionRequestInterface;
+use Xenon\SslCommerz\Exceptions\RequestParameterMissingException;
+use Xenon\SslCommerz\Traits\RequestValidatorTrait;
 
 class SessionRequest implements SessionRequestInterface
 {

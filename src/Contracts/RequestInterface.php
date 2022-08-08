@@ -6,7 +6,7 @@
  * Time: 12:41 PM
  */
 
-namespace Uzzal\SslCommerz\Contracts;
+namespace Xenon\SslCommerz\Contracts;
 
 
 interface RequestInterface

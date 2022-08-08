@@ -6,7 +6,7 @@
  * Time: 12:42 PM
  */
 
-namespace Uzzal\SslCommerz\Contracts;
+namespace Xenon\SslCommerz\Contracts;
 
 
 interface OrderValidationRequestInterface extends RequestInterface

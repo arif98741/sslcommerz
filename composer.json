@@ -1,20 +1,20 @@
 {
-    "name": "uzzal/sslcommerz",
+    "name": "xenon/sslcommerz",
     "description": "Laravel library for SSLCommerz payment gateway",
     "keywords": ["laravel", "payment", "gateway", "sslcommerz"],
     "type": "library",
-    "license": "MIT",    
+    "license": "MIT",
     "authors": [
         {
             "name": "Mahabubul Hasan",
             "email": "codehasan@gmail.com"
         }
-    ],    
+    ],
     "autoload": {
         "files": [
             "src/helpers.php"
         ],
-        "psr-4": {            
+        "psr-4": {
             "Uzzal\\SslCommerz\\": "src/"
         }
     },

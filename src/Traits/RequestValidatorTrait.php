@@ -6,10 +6,10 @@
  * Time: 1:04 PM
  */
 
-namespace Uzzal\SslCommerz\Traits;
+namespace Xenon\SslCommerz\Traits;
 
 
-use Uzzal\SslCommerz\Exceptions\RequestParameterMissingException;
+use Xenon\SslCommerz\Exceptions\RequestParameterMissingException;
 
 trait RequestValidatorTrait
 {

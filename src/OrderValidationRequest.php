@@ -5,11 +5,11 @@
  * Time: 3:44 PM
  */
 
-namespace Uzzal\SslCommerz;
+namespace Xenon\SslCommerz;
 
 
-use Uzzal\SslCommerz\Contracts\OrderValidationRequestInterface;
-use Uzzal\SslCommerz\Traits\RequestValidatorTrait;
+use Xenon\SslCommerz\Contracts\OrderValidationRequestInterface;
+use Xenon\SslCommerz\Traits\RequestValidatorTrait;
 
 class OrderValidationRequest implements OrderValidationRequestInterface
 {

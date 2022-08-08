@@ -5,7 +5,7 @@
  * Time: 12:58 PM
  */
 
-namespace Uzzal\SslCommerz;
+namespace Xenon\SslCommerz;
 
 
 use Illuminate\Support\ServiceProvider;
