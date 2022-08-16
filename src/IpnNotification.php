@@ -46,7 +46,7 @@ class IpnNotification
      */
     public function __construct($post = [])
     {
-        if (count($post) == 0) {
+        if (count($post) === 0) {
             $this->_ipn_vals = $post;
         } else {
             $this->_ipn_vals = $_POST;

@@ -1,13 +1,13 @@
 <?php
-if (! function_exists('ipn_hash_varify')) {
+if (!function_exists('ipn_hash_varify')) {
 
     /**
      * @param string $store_passwd
      * @return bool
      */
-    function ipn_hash_varify($store_passwd = "")
+    function ipn_hash_varify(string $store_passwd = ""): bool
     {
-        if (isset($_POST) && isset($_POST['verify_sign']) && isset($_POST['verify_key'])) {
+        if (isset($_POST['verify_sign'], $_POST['verify_key'])) {
             # NEW ARRAY DECLARED TO TAKE VALUE OF ALL POST
 
             $pre_define_key = explode(',', $_POST['verify_key']);
@@ -32,13 +32,11 @@ if (! function_exists('ipn_hash_varify')) {
             }
             $hash_string = rtrim($hash_string, '&');
 
-            if (md5($hash_string) == $_POST['verify_sign']) {
+            if (md5($hash_string) === $_POST['verify_sign']) {
 
                 return true;
-
-            } else {
-                return false;
             }
-        } else return false;
+        }
+        return false;
     }
 }

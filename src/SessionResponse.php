@@ -22,16 +22,19 @@ class SessionResponse
 
     private $_trans_id;
     private $_json;
+
     public function __construct($content)
     {
         $this->_json = json_decode($content, true);
     }
 
-    public function setTransactionId($transaction_id){
+    public function setTransactionId($transaction_id)
+    {
         $this->_trans_id = $transaction_id;
     }
 
-    public function getTransactionId(){
+    public function getTransactionId()
+    {
         return $this->_trans_id;
     }
 
@@ -80,7 +83,8 @@ class SessionResponse
         return $this->_json[self::GATEWAY_DESCRIPTION];
     }
 
-    public function get($key){
+    public function get($key)
+    {
         return $this->_json[$key];
     }
 }

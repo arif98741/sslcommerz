@@ -47,19 +47,6 @@ class OrderValidationRequest implements OrderValidationRequestInterface
     }
 
     /**
-     * @param $isSandbox
-     * @return string
-     */
-    public function getApiUrl($isSandbox = false): string
-    {
-        if ($isSandbox) {
-            return 'https://sandbox.sslcommerz.com/validator/api/validationserverAPI.php';
-        }
-
-        return 'https://securepay.sslcommerz.com/validator/api/validationserverAPI.php';
-    }
-
-    /**
      * @throws RequestParameterMissingException
      * @throws GuzzleException
      * @throws \JsonException
@@ -74,6 +61,19 @@ class OrderValidationRequest implements OrderValidationRequestInterface
         $param .= 'v=1&format=json';
         $resp = $client->get($this->getApiUrl($isSandbox) . $param);
         return new OrderValidationResponse($resp->getBody()->getContents());
+    }
+
+    /**
+     * @param $isSandbox
+     * @return string
+     */
+    public function getApiUrl($isSandbox = false): string
+    {
+        if ($isSandbox) {
+            return 'https://sandbox.sslcommerz.com/validator/api/validationserverAPI.php';
+        }
+
+        return 'https://securepay.sslcommerz.com/validator/api/validationserverAPI.php';
     }
 
 }

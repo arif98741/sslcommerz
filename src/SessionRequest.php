@@ -17,7 +17,7 @@ class SessionRequest implements SessionRequestInterface
 {
     use RequestValidatorTrait;
 
-    private $_required=[
+    private $_required = [
         self::STORE_ID,
         self::STORE_PASSWORD,
         self::TOTAL_AMOUNT,
@@ -31,22 +31,13 @@ class SessionRequest implements SessionRequestInterface
         self::CUSTOMER_EMAIL,
         self::CUSTOMER_PHONE,
     ];
-    private $_errors=[];
-    private $_fields=[];
+    private $_errors = [];
+    private $_fields = [];
     private $_validated = false;
 
     public function __construct(array $fields)
     {
         $this->_fields = $fields;
-    }
-
-    public function getApiUrl($isSandbox = false)
-    {
-        if($isSandbox){
-            return 'https://sandbox.sslcommerz.com/gwprocess/v3/api.php';
-        }
-
-        return 'https://securepay.sslcommerz.com/gwprocess/v3/api.php';
     }
 
     /**
@@ -55,11 +46,20 @@ class SessionRequest implements SessionRequestInterface
      * @throws RequestParameterMissingException
      * @throws GuzzleException
      */
-    function send($isSandbox=false)
+    function send($isSandbox = false)
     {
         $client = new \GuzzleHttp\Client(['verify' => false]);
-        $resp = $client->request('POST', $this->getApiUrl($isSandbox), ['form_params'=> $this->values()]);
+        $resp = $client->request('POST', $this->getApiUrl($isSandbox), ['form_params' => $this->values()]);
         return new SessionResponse($resp->getBody()->getContents());
+    }
+
+    public function getApiUrl($isSandbox = false)
+    {
+        if ($isSandbox) {
+            return 'https://sandbox.sslcommerz.com/gwprocess/v3/api.php';
+        }
+
+        return 'https://securepay.sslcommerz.com/gwprocess/v3/api.php';
     }
 
 

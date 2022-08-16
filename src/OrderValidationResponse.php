@@ -41,27 +41,33 @@ class OrderValidationResponse
         $this->_json = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
     }
 
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->_json[self::STATUS];
     }
 
-    public function getTransactionId(){
+    public function getTransactionId()
+    {
         return $this->_json[self::TRANSACTION_ID];
     }
 
-    public function getAmount(){
+    public function getAmount()
+    {
         return $this->_json[self::AMOUNT];
     }
 
-    public function getStoreAmount(){
+    public function getStoreAmount()
+    {
         return $this->_json[self::STORE_AMOUNT];
     }
 
-    public function getCurrency(){
+    public function getCurrency()
+    {
         return $this->_json[self::CURRENCY];
     }
 
-    public function get($key){
+    public function get($key)
+    {
         return $this->_json[$key];
     }
 }

@@ -10,6 +10,7 @@ namespace Xenon\SslCommerz;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Xenon\SslCommerz\Exceptions\RenderException;
+use Xenon\SslCommerz\Exceptions\RequestParameterMissingException;
 
 class Client
 {
@@ -45,7 +46,7 @@ class Client
     /**
      * @param $valId
      * @return OrderValidationResponse
-     * @throws RenderException
+     * @throws RenderException|\JsonException
      */
     public static function verifyOrder($valId)
     {
@@ -55,7 +56,7 @@ class Client
 
         try {
             return (new OrderValidationRequest($data))->send(config('sslcommerz.sandbox_mode'));
-        } catch (GuzzleException|Exceptions\RequestParameterMissingException $e) {
+        } catch (GuzzleException|RequestParameterMissingException $e) {
             throw new RenderException($e->getMessage());
         }
     }

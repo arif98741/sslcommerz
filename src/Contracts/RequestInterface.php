@@ -12,8 +12,12 @@ namespace Xenon\SslCommerz\Contracts;
 interface RequestInterface
 {
     function isValid();
+
     function getErrors();
+
     function values();
-    function getApiUrl($isSandbox=false);
-    function send($isSandbox=false);
+
+    function getApiUrl($isSandbox = false);
+
+    function send($isSandbox = false);
 }

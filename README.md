@@ -1,14 +1,15 @@
 # SSLCommerz
+This is a fork of uzzal/sslcommerz package for laravel.
 [SSLCommerz](https://www.sslcommerz.com) Payment gateway library for Laravel framework. Official documentation is [here](https://developer.sslcommerz.com/docs.html).
 
 ## install
 ```
-composer require uzzal/sslcommerz
+composer require xenon/sslcommerz
 ```
 
 ### publish
 ```
-artisan vendor:publish
+php artisan vendor:publish --provider=Xenon\SslCommerz\SslCommerzServiceProvider
 ```
 This command will create a `sslcommerz.php` file inside the `config` directory. Configure your parameters in your `.env` file
 ```
@@ -18,6 +19,7 @@ STORE_PASSWORD=your_store_password
 SUCCESS_URL=http://your-domain.at/success.php
 FAIL_URL=http://your-domain.at/fail.php
 CANCEL_URL=http://your-domain.at/cancel.php
+IPN_URL=http://your-domain.at/ipn.php
 SANDBOX_MODE=true
 ``` 
 
@@ -58,7 +60,3 @@ if(ipn_hash_varify(config('sslcommerz.store_password'))){
     $resp = Client::verifyOrder($val_id);
 } 
 ```
-
-### SSLCommerz process flow
-
-![alt text](https://developer.sslcommerz.com/assets/images/banner/sslc_process.png "Process flow") 
