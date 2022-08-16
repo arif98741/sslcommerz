@@ -32,9 +32,13 @@ class OrderValidationResponse
     const RISK_TITLE = 'risk_title';
 
     private $_json;
+
+    /**
+     * @throws \JsonException
+     */
     public function __construct($content)
     {
-        $this->_json = json_decode($content, true);
+        $this->_json = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
     }
 
     public function getStatus(){

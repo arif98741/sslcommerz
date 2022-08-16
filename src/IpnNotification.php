@@ -40,29 +40,50 @@ class IpnNotification
     const VALUE_D = 'value_d';
 
     private $_ipn_vals = [];
-    public function __construct($post=[])
+
+    /**
+     * @param $post
+     */
+    public function __construct($post = [])
     {
-        if(count($post)==0){
+        if (count($post) == 0) {
             $this->_ipn_vals = $post;
-        }else{
+        } else {
             $this->_ipn_vals = $_POST;
         }
 
     }
 
-    public function get($key){
+    /**
+     * @param $key
+     * @return mixed
+     */
+    public function get($key)
+    {
         return $this->_ipn_vals[$key];
     }
 
-    public function getValId(){
+    /**
+     * @return mixed
+     */
+    public function getValId()
+    {
         return $this->_ipn_vals[self::VAL_ID];
     }
 
-    public function getTransactionId(){
+    /**
+     * @return mixed
+     */
+    public function getTransactionId()
+    {
         return $this->_ipn_vals[self::TRAN_ID];
     }
 
-    public function getAmount(){
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
         return $this->_ipn_vals[self::AMOUNT];
     }
 }

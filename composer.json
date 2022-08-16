@@ -1,7 +1,12 @@
 {
     "name": "xenon/sslcommerz",
     "description": "Laravel library for SSLCommerz payment gateway",
-    "keywords": ["laravel", "payment", "gateway", "sslcommerz"],
+    "keywords": [
+        "laravel",
+        "payment",
+        "gateway",
+        "sslcommerz"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -15,19 +20,21 @@
             "src/helpers.php"
         ],
         "psr-4": {
-            "Uzzal\\SslCommerz\\": "src/"
+            "Xenon\\SslCommerz\\": "src/"
         }
     },
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": ">=5.3.0",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3|>=7.3.0",
+        "ext-json": "*",
+        "ext-curl": "*"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Uzzal\\SslCommerz\\SslCommerzServiceProvider"
+                "Xenon\\SslCommerz\\SslCommerzServiceProvider"
             ]
         }
     }

@@ -8,6 +8,7 @@
 namespace Xenon\SslCommerz;
 
 
+use GuzzleHttp\Exception\GuzzleException;
 use Xenon\SslCommerz\Contracts\SessionRequestInterface;
 use Xenon\SslCommerz\Exceptions\RequestParameterMissingException;
 use Xenon\SslCommerz\Traits\RequestValidatorTrait;
@@ -43,20 +44,20 @@ class SessionRequest implements SessionRequestInterface
     {
         if($isSandbox){
             return 'https://sandbox.sslcommerz.com/gwprocess/v3/api.php';
-        }else{
-            return 'https://securepay.sslcommerz.com/gwprocess/v3/api.php';
         }
+
+        return 'https://securepay.sslcommerz.com/gwprocess/v3/api.php';
     }
 
     /**
      * @param bool $isSandbox
      * @return SessionResponse
      * @throws RequestParameterMissingException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     function send($isSandbox=false)
     {
-        $client = new \GuzzleHttp\Client();
+        $client = new \GuzzleHttp\Client(['verify' => false]);
         $resp = $client->request('POST', $this->getApiUrl($isSandbox), ['form_params'=> $this->values()]);
         return new SessionResponse($resp->getBody()->getContents());
     }
