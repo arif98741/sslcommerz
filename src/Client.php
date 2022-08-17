@@ -20,7 +20,7 @@ class Client
      * @param array $config
      * @return SessionResponse
      * @throws Exceptions\RequestParameterMissingException
-     * @throws GuzzleException
+     * @throws RenderException
      */
     public static function initSession(Customer $customer, $amount, array $config = [])
     {
@@ -38,7 +38,17 @@ class Client
         $data[SessionRequest::CUSTOMER_PHONE] = $customer->getPhone();
 
         $request = new SessionRequest(array_merge($data, $config));
-        $resp = $request->send(config('sslcommerz.sandbox_mode'));
+        try {
+            $resp = $request->send(config('sslcommerz.sandbox_mode'));
+
+        } catch (GuzzleException $e) {
+            throw new RenderException($e->getMessage());
+        }
+
+        if ($resp->getStatus() === 'FAILED') {
+            throw new RenderException($resp->getFailureReason() . '. Check your environment data');
+        }
+
         $resp->setTransactionId($data[SessionRequest::TRANSACTION_ID]);//important
         return $resp;
     }
