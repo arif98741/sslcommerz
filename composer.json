@@ -26,10 +26,10 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.6.4",
+        "php": ">=7.2",
         "laravel/framework": ">=5.3.0",
         "guzzlehttp/guzzle": "^6.3|>=7.3.0",
-        "touhidurabir/laravel-stub-generator": "^1.0",
+        "touhidurabir/laravel-stub-generator": "dev-master",
         "ext-json": "*",
         "ext-curl": "*"
     },
