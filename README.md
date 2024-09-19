@@ -48,7 +48,7 @@ echo 'transaction: '.$resp->getTransactionId();
 ```
 
 ### IPN Listener (Step 4,5)
-After filling the card information and submission in the sslcommerz window it will send a IPN notificaion to your
+After filling the card information and submission in the sslcommerz window it will send a IPN notification to your
 specified IPN url. To grab the notification use the following code. For more details [see here](https://developer.sslcommerz.com/docs.html)
  
 ```php
