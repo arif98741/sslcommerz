@@ -22,7 +22,7 @@ class Client
      * @throws Exceptions\RequestParameterMissingException
      * @throws RenderException
      */
-    public static function initSession(Customer $customer, $amount, array $config = [])
+    public static function initSession(Customer $customer, $amount, array $config = [],$options = [])
     {
         $data[SessionRequest::STORE_ID] = config('sslcommerz.store_id');
         $data[SessionRequest::STORE_PASSWORD] = config('sslcommerz.store_password');
@@ -36,6 +36,7 @@ class Client
         $data[SessionRequest::CUSTOMER_NAME] = $customer->getName();
         $data[SessionRequest::CUSTOMER_EMAIL] = $customer->getEmail();
         $data[SessionRequest::CUSTOMER_PHONE] = $customer->getPhone();
+        $data['opt_a'] = $options['opt_a'];
 
         $request = new SessionRequest(array_merge($data, $config));
         try {
