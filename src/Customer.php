@@ -20,6 +20,10 @@ class Customer
     private $_post_code;
     private $_country;
     private $_fax;
+    private $_opt_a;
+    private $_opt_b;
+    private $_opt_c;
+    private $_opt_d;
 
     public function __construct($name, $email, $phone)
     {
@@ -165,5 +169,43 @@ class Customer
         $this->_fax = $fax;
     }
 
+    public function getOptA()
+    {
+        return $this->_opt_a;
+    }
 
+    public function getOptB()
+    {
+        return $this->_opt_b;
+    }
+
+    public function getOptC()
+    {
+        return $this->_opt_c;
+    }
+
+    public function getOptD()
+    {
+        return $this->_opt_d;
+    }
+
+    public function setOptionA($opt_a): void
+    {
+        $this->_opt_a = $opt_a;
+    }
+
+    public function setOptionB($opt_b): void
+    {
+        $this->_opt_b = $opt_b;
+    }
+
+    public function setOptionC($opt_c): void
+    {
+        $this->_opt_c = $opt_c;
+    }
+
+    public function setOptionD($opt_d): void
+    {
+        $this->_opt_d = $opt_d;
+    }
 }

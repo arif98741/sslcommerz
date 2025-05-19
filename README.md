@@ -2,7 +2,7 @@
 This is a fork of uzzal/sslcommerz package for laravel.
 [SSLCommerz](https://www.sslcommerz.com) Payment gateway library for Laravel framework. Official documentation is [here](https://developer.sslcommerz.com/docs.html).
 
-## install
+## Installation
 ```
 composer require xenon/sslcommerz
 ```
@@ -24,11 +24,18 @@ SANDBOX_MODE=true
 ``` 
 
 ### Initiating a Payment session
-This `initSession` will give you a gateway url. With this url you will be able to continue the payment through sslcommerz.
+This `initSession` will give you a gateway url. With this url you will be able to continue the payment through sslcommerz. 
+Pass data using $customer using by calling several methods
 ```php
-$customer = new Customer('Mahabubul Hasan', 'mahabub@example.com', '0171xxxxx22');
-$resp = Client::initSession($customer, 29); //29 is the amount
-echo $resp->getGatewayUrl();
+$customer = new Customer('Ariful Islam', 'something@example.com', '0171xxxxx22');
+$customer->setOptionA('A');
+$customer->setOptionB('B');
+$customer->setOptionC('C');
+$customer->setOptionD('D');
+
+$invoice = 'trx_' . uniqid(); //transaction or invoice string
+$resp = Client::initSession($customer, 10, $invoice); //29 is the amount
+return redirect($resp->getGatewayUrl());
 ```
 or with configuration
 ```php

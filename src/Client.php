@@ -18,17 +18,18 @@ class Client
      * @param Customer $customer
      * @param $amount
      * @param array $config
+     * @param $options
      * @return SessionResponse
-     * @throws Exceptions\RequestParameterMissingException
      * @throws RenderException
+     * @throws RequestParameterMissingException
      */
-    public static function initSession(Customer $customer, $amount, array $config = [],$options = [])
+    public static function initSession(Customer $customer, $amount, $transactionId = null, array $config = [])
     {
         $data[SessionRequest::STORE_ID] = config('sslcommerz.store_id');
         $data[SessionRequest::STORE_PASSWORD] = config('sslcommerz.store_password');
         $data[SessionRequest::TOTAL_AMOUNT] = $amount;
         $data[SessionRequest::CURRENCY] = config('sslcommerz.currency');;
-        $data[SessionRequest::TRANSACTION_ID] = "TRANSACTION_" . uniqid();
+        $data[SessionRequest::TRANSACTION_ID] = isset($transactionId) ? $transactionId : "TRANSACTION_" . uniqid();
         $data[SessionRequest::SUCCESS_URL] = config('sslcommerz.success_url');
         $data[SessionRequest::FAIL_URL] = config('sslcommerz.fail_url');
         $data[SessionRequest::CANCEL_URL] = config('sslcommerz.cancel_url');
@@ -36,7 +37,10 @@ class Client
         $data[SessionRequest::CUSTOMER_NAME] = $customer->getName();
         $data[SessionRequest::CUSTOMER_EMAIL] = $customer->getEmail();
         $data[SessionRequest::CUSTOMER_PHONE] = $customer->getPhone();
-        $data['opt_a'] = $options['opt_a'];
+        $data[SessionRequest::OPTIONAL_A] = $customer->getOptA() ?? null;
+        $data[SessionRequest::OPTIONAL_B] = $customer->getOptB() ?? null;
+        $data[SessionRequest::OPTIONAL_C] = $customer->getOptC() ?? null;
+        $data[SessionRequest::OPTIONAL_D] = $customer->getOptD() ?? null;
 
         $request = new SessionRequest(array_merge($data, $config));
         try {
