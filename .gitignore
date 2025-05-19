@@ -1,0 +1,5 @@
+vendor
+.idea
+.phpintel
+node_modules
+composer.lock
